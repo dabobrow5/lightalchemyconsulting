@@ -714,32 +714,111 @@ section { padding: 100px 60px; }
   font-weight: 500;
 }
 
-.flywheel { display: flex; flex-direction: column; gap: 2px; }
+/* ── ECOSYSTEM ARCHITECTURE ── */
+.ecosystem { display: flex; flex-direction: column; gap: 10px; }
 
-.fw-arm {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(201,168,76,0.1);
-  padding: 22px 26px;
+.eco-parent {
+  background: rgba(201,168,76,0.08);
+  border: 1px solid rgba(201,168,76,0.3);
+  border-top: 3px solid var(--gold);
+  padding: 20px 26px;
   display: flex;
   gap: 18px;
   align-items: center;
+}
+
+.eco-connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  position: relative;
+  height: 20px;
+}
+
+.eco-connector::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0; bottom: 0;
+  width: 1px;
+  background: rgba(201,168,76,0.2);
+}
+
+.eco-connector::after {
+  content: '';
+  position: absolute;
+  left: calc(25% + 1px);
+  right: calc(25% + 1px);
+  top: 50%;
+  height: 1px;
+  background: rgba(201,168,76,0.2);
+}
+
+.eco-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+}
+
+.eco-arm {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(201,168,76,0.12);
+  padding: 20px 22px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
   transition: background 0.2s;
 }
 
-.fw-arm:hover { background: rgba(201,168,76,0.05); }
+.eco-arm:hover { background: rgba(201,168,76,0.05); }
 
-.fw-label {
+.eco-arm.ghost {
+  background: rgba(255,255,255,0.01);
+  border: 1px dashed rgba(201,168,76,0.15);
+  opacity: 0.55;
+}
+
+.eco-arm.ghost:hover { background: rgba(201,168,76,0.03); opacity: 0.7; }
+
+.eco-label {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 30px;
+  font-size: 26px;
   font-weight: 500;
   color: var(--gold);
   flex-shrink: 0;
-  width: 56px;
+  width: 50px;
+  line-height: 1;
+  padding-top: 2px;
 }
 
-.fw-text h4 { font-size: 12.5px; font-weight: 600; letter-spacing: 0.06em; color: white; margin-bottom: 3px; }
-.fw-text p { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.5; font-weight: 300; margin: 0; }
-.fw-arrow { text-align: center; color: rgba(201,168,76,0.25); font-size: 16px; padding: 3px 0; }
+.eco-arm.ghost .eco-label { color: rgba(201,168,76,0.4); }
+
+.eco-text h4 { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; color: white; margin-bottom: 3px; }
+.eco-text p { font-size: 11.5px; color: rgba(255,255,255,0.38); line-height: 1.5; font-weight: 300; margin: 0; }
+.eco-arm.ghost .eco-text h4 { color: rgba(255,255,255,0.35); }
+
+.eco-badge {
+  display: inline-block;
+  font-size: 8px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(201,168,76,0.5);
+  border: 1px dashed rgba(201,168,76,0.25);
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.eco-note {
+  font-size: 10.5px;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 0.08em;
+  text-align: center;
+  padding-top: 6px;
+  font-style: italic;
+}
 
 /* ── CONTACT ── */
 .contact-section { background: var(--cream); padding: 100px 60px; }
@@ -1090,37 +1169,70 @@ footer {
   <div class="about-inner">
     <div class="about-text">
       <div class="section-label">About LAC</div>
-      <h2 class="section-title">Built as a<br><em>flywheel.</em></h2>
-      <p>Light Alchemy Consulting is not a traditional consultancy. It is a deliberate business architecture: consulting revenue funds proprietary IP development, IP differentiates consulting, and AI-era demand drives growth across every arm.</p>
+      <h2 class="section-title">Built as an<br><em>ecosystem.</em></h2>
+      <p>Light Alchemy Consulting is not a traditional consultancy. It is a deliberate architecture — entities designed to compound on each other, each with a distinct purpose, all operating under a shared vision.</p>
       <p>We are at the beginning of a deliberate build — entering market at the inflection point where every organization simultaneously needs AI capability, workflow automation, and people intelligence.</p>
       <div class="lav-mark">
         <span>A Light Alchemy Ventures Company</span>
       </div>
     </div>
-    <div class="flywheel">
-      <div class="fw-arm">
-        <div class="fw-label">LAC</div>
-        <div class="fw-text">
-          <h4>Light Alchemy Consulting</h4>
-          <p>Revenue engine. Core consultancy delivering agentic, iPaaS, TMI/IMI, and AI enablement engagements.</p>
-        </div>
-      </div>
-      <div class="fw-arrow">↓</div>
-      <div class="fw-arm">
-        <div class="fw-label">LAV</div>
-        <div class="fw-text">
+    <div class="ecosystem">
+
+      <!-- LAV PARENT -->
+      <div class="eco-parent">
+        <div class="eco-label" style="font-size:22px; width:44px;">LAV</div>
+        <div class="eco-text">
           <h4>Light Alchemy Ventures</h4>
-          <p>Commission and partner agreement layer. Holds the Celigo channel partnership. Routes capital to LAL.</p>
+          <p>Parent holding company of the Light Alchemy ecosystem.</p>
         </div>
       </div>
-      <div class="fw-arrow">↓</div>
-      <div class="fw-arm">
-        <div class="fw-label">LAL</div>
-        <div class="fw-text">
-          <h4>Light Alchemy Labs</h4>
-          <p>Proprietary IP engine. Builds TMI/IMI methodology and future AI products. Funded by LAC/LAV.</p>
+
+      <!-- CONNECTOR -->
+      <div class="eco-connector"></div>
+
+      <!-- 2x2 GRID -->
+      <div class="eco-grid">
+
+        <!-- LAC — active -->
+        <div class="eco-arm">
+          <div class="eco-label">LAC</div>
+          <div class="eco-text">
+            <h4>Light Alchemy Consulting</h4>
+            <p>Core consultancy. Agentic automation, iPaaS, AI enablement, and TMI/IMI engagements.</p>
+          </div>
         </div>
+
+        <!-- LAL — active -->
+        <div class="eco-arm">
+          <div class="eco-label">LAL</div>
+          <div class="eco-text">
+            <h4>Light Alchemy Labs</h4>
+            <p>Proprietary IP engine. Builds TMI/IMI methodology and future AI products.</p>
+          </div>
+        </div>
+
+        <!-- Future entity 1 — ghost -->
+        <div class="eco-arm ghost">
+          <div class="eco-label">◻</div>
+          <div class="eco-text">
+            <div class="eco-badge">In Development</div>
+            <h4>Future Entity</h4>
+            <p>Part of the Light Alchemy Ventures ecosystem. Details to follow.</p>
+          </div>
+        </div>
+
+        <!-- Future entity 2 — ghost -->
+        <div class="eco-arm ghost">
+          <div class="eco-label">◻</div>
+          <div class="eco-text">
+            <div class="eco-badge">In Development</div>
+            <h4>Future Entity</h4>
+            <p>Part of the Light Alchemy Ventures ecosystem. Details to follow.</p>
+          </div>
+        </div>
+
       </div>
+      <div class="eco-note">The Light Alchemy Ventures ecosystem is built to grow.</div>
     </div>
   </div>
 </section>
